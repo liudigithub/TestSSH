@@ -24,7 +24,6 @@ public class UserAction extends ActionSupport {
     private static final Logger LOGGER = Logger.getLogger(UserAction.class);
 
     private User user;
-    @SuppressWarnings("unused")
     private List<User> userList;
 
     @Autowired

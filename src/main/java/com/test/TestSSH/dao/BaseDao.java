@@ -7,9 +7,9 @@ import java.util.List;
  * 
  * 
  * @author liudi
- * @date 2018Äê1ÔÂ16ÈÕ
+ * @date 2018ï¿½ï¿½1ï¿½ï¿½16ï¿½ï¿½
  */
-public interface BaseDao<T, PK extends Serializable> {
+public interface BaseDao<T, PK extends Serializable>  {
     T load(PK id);  
     T get(PK id);  
     List<T> findAll();  

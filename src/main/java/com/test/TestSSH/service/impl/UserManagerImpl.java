@@ -3,6 +3,7 @@ package com.test.TestSSH.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
 import com.test.TestSSH.dao.UserDao;
@@ -22,7 +23,7 @@ public class UserManagerImpl implements UserManager {
   
     @Override  
     public User load(Integer id) {  
-        return null;  
+        return userDao.load(id);  
     }  
   
     @Override  

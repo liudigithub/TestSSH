@@ -43,6 +43,12 @@ public class UserAction extends ActionSupport {
         PrintWriter out = response.getWriter();
         out.println("Hello " + user.getUserName());
     }
+    
+    public String load(){
+        String id = ServletActionContext.getRequest().getParameter("id");
+        user = userManager.load(Integer.valueOf(id));
+        return SUCCESS;
+    }
 
     public User getUser() {
         return user;

@@ -42,9 +42,14 @@
     <!-- struts2的action必须放在一个指定的包空间下定义 -->
     <package name="user" extends="struts-default">
     <!-- 定义处理请求URL为login.action的Action -->
-        <action name="find" class="com.test.TestSSH.UserAction">
+        <action name="findList" class="com.test.TestSSH.UserAction">
         <!-- 定义处理结果字符串和资源之间的映射关系 -->
             <result name="success">/find.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="findUser" class="com.test.TestSSH.UserAction" method="load">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/user.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
     </package>

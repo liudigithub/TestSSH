@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.test.TestSSH.dao.UserDao;
@@ -21,14 +22,17 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired  
     private SessionFactory sessionFactory;  
-      
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
+    
     private Session getCurrentSession() {  
         return sessionFactory.getCurrentSession();  
     }  
   
     @Override  
     public User load(Integer id) {  
-        return getCurrentSession().load(User.class, id);  
+        return hibernateTemplate.load(User.class, id);
+//        return getCurrentSession().load(User.class, id);  
     }  
   
     @Override  

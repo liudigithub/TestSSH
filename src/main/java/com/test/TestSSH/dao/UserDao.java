@@ -6,8 +6,8 @@ import com.test.TestSSH.domain.User;
  * 
  * 
  * @author liudi
- * @date 2018Äê1ÔÂ16ÈÕ
+ * @date 2018ï¿½ï¿½1ï¿½ï¿½16ï¿½ï¿½
  */
-public interface UserDao extends BaseDao<User, Integer>{
+public interface UserDao extends BaseDao<User, Integer> {
 
 }

@@ -3,7 +3,6 @@ package com.test.TestSSH.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
 import com.test.TestSSH.dao.UserDao;

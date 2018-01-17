@@ -1,59 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">  
-<struts>  
-    <!-- 指定由spring负责action对象的创建 -->  
-    <constant name="struts.objectFactory" value="spring" />  
-    <!-- 所有匹配*.action的请求都由struts2处理 -->  
-    <constant name="struts.action.extension" value="action" />  
-    <!-- 是否启用开发模式 -->  
-    <constant name="struts.devMode" value="false" />  
-    <!-- struts配置文件改动后，是aa否重新加载 -->  
-    <constant name="struts.configuration.xml.reload" value="true" />  
-    <!-- 设置浏览器是否缓存静态内容 -->  
-    <constant name="struts.serve.static.browserCache" value="false" />  
-    <!-- 请求参数的编码方式 -->  
-    <constant name="struts.i18n.encoding" value="utf-8" />  
-    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->  
-    <constant name="struts.i18n.reload" value="true" />  
-    <!-- 文件上传最大值 -->  
-    <constant name="struts.multipart.maxSize" value="104857600" />  
-    <!-- 让struts2支持动态方法调用 -->  
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />  
-    <!-- Action名称中是否还是用斜线 -->  
-    <constant name="struts.enable.SlashesInActionNames" value="false" />  
-    <!-- 允许标签中使用表达式语法 -->  
-    <constant name="struts.tag.altSyntax" value="true" />  
-    <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->  
-    <constant name="struts.dispatcher.parametersWorkaround" value="false" />  
-  
-    <!-- 用于CRUD Action的parent package -->  
-    <package name="crud-default" extends="convention-default">  
-        <!-- 基于paramsPrepareParamsStack, 增加store interceptor保证actionMessage在redirect后不会丢失 -->  
-        <interceptors>  
-            <interceptor-stack name="crudStack">  
-                <interceptor-ref name="store">  
-                    <param name="operationMode">AUTOMATIC</param>  
-                </interceptor-ref>  
-                <interceptor-ref name="paramsPrepareParamsStack" />  
-            </interceptor-stack>  
-        </interceptors>  
-        <default-interceptor-ref name="crudStack" />  
-    </package>  
-    <!-- struts2的action必须放在一个指定的包空间下定义 -->
-    <package name="user" extends="struts-default">
-    <!-- 定义处理请求URL为login.action的Action -->
-        <action name="findList" class="com.test.TestSSH.UserAction">
-        <!-- 定义处理结果字符串和资源之间的映射关系 -->
-            <result name="success">/find.jsp</result>
-            <result name="error">/error.jsp</result>
-        </action>
-        <action name="findUser" class="com.test.TestSSH.UserAction" method="load">
-        <!-- 定义处理结果字符串和资源之间的映射关系 -->
-            <result name="success">/user.jsp</result>
-            <result name="error">/error.jsp</result>
-        </action>
-    </package>
-  
-    <!-- 使用Convention插件,实现约定大于配置的零配置文件风格. 特殊的Result路径在Action类中使用@Result设定. -->  
-	
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 所有匹配*.action的请求都由struts2处理 -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 是否启用开发模式 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- struts配置文件改动后，是aa否重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 设置浏览器是否缓存静态内容 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 请求参数的编码方式 -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+	<constant name="struts.i18n.reload" value="true" />
+	<!-- 文件上传最大值 -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<!-- 让struts2支持动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- Action名称中是否还是用斜线 -->
+	<constant name="struts.enable.SlashesInActionNames" value="false" />
+	<!-- 允许标签中使用表达式语法 -->
+	<constant name="struts.tag.altSyntax" value="true" />
+	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
+	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
+
+	<!-- 上传的全部图片的最大限制 -->
+	<constant name="struts.multipart.maxSize" value="1024102400" />
+
+	<!-- 用于CRUD Action的parent package -->
+	<package name="crud-default" extends="convention-default">
+		<!-- 基于paramsPrepareParamsStack, 增加store interceptor保证actionMessage在redirect后不会丢失 -->
+		<interceptors>
+			<interceptor-stack name="crudStack">
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+				<interceptor-ref name="paramsPrepareParamsStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="crudStack" />
+	</package>
+
+	<!-- struts2的action必须放在一个指定的包空间下定义 -->
+	<package name="user" extends="struts-default">
+		<!-- 定义处理请求URL为login.action的Action -->
+		<action name="findList" class="com.test.TestSSH.UserAction">
+			<!-- 定义处理结果字符串和资源之间的映射关系 -->
+			<result name="success">/find.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="findUser" class="com.test.TestSSH.UserAction"
+			method="load">
+			<!-- 定义处理结果字符串和资源之间的映射关系 -->
+			<result name="success">/user.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="addFile" class="com.test.TestSSH.FileAction">
+			<!-- 重定向，当在添加的action中返回name="scce" 的时候，就重定向带allFile的action，显示全部的图片 -->
+			<result name="success" type="redirectAction">allFile</result>
+		</action>
+		<action name="allFile" class="com.test.TestSSH.FileAction"
+			method="list">
+			<result name="success">/jsp/allFile.jsp</result>
+		</action>
+
+		<action name="fileDownload" class="com.test.TestSSH.FileDownloadAction">
+			<result name="success" type="stream">
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 使用Convention插件,实现约定大于配置的零配置文件风格. 特殊的Result路径在Action类中使用@Result设定. -->
+
 </struts>  

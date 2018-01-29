@@ -18,6 +18,65 @@
 	src="<%=basePath%>/js/base/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>/js/base/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	
+<style type="text/css">
+.my-dialog-hide{
+	display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+.my-dialog-show{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+.my-body{
+    background: white;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    z-index: 1001;
+    border: 1px solid #c5c5c5;
+    padding: .2em;
+}
+.close-button{
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px solid #c5c5c5;
+}
+.my-title{
+    border: 1px solid #ddd;
+    background: #e9e9e9;
+    color: #333;
+    height: 32px;
+    font-weight: bold;
+}
+.text-title{
+    margin-top: 7px;
+    margin-left: 6px;
+    width: 50%;
+    float: left;
+}
+.text-body{
+	text-align: center;
+    height: 80%;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+}
+</style>
 </head>
 <body>
 	<!-- 传值 -->
@@ -29,6 +88,33 @@
 	</p>
 	<div id="dialog" title="Basic dialog">
 		<p>这是一个动画显示的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+	</div>
+	
+	<!-- 自定义弹窗 -->
+	<p>
+		<button id="myOpener">自定义弹窗</button>
+	</p>
+	<div id="myDialog" class="my-dialog-hide">
+		<div class="my-body">
+			<div class="my-title">
+				<div class="text-title">测试弹窗</div>
+				<div class="close-button"><button>X</button></div>
+			</div>
+			<div class="text-body">
+				<p>啦啦啦</p>
+				<p>啦啦啦2</p>
+				<p>啦啦啦3</p>
+				<p>啦啦23啦</p>
+				<p>啦啦sdf啦</p>
+				<p>啦啦sdf啦</p>
+				<p>啦cc啦啦</p>
+				<p>啦啦zz啦</p>
+				<p>啦啦ss啦</p>
+				<p>啦   vcx啦啦</p>
+				<p>啦啦czv啦</p>
+				<p>啦啦zxvc啦</p>
+			</div>
+		</div>
 	</div>
 	
 	<!-- 图片上传 -->
@@ -80,6 +166,15 @@
 			$("#opener").click(function() {
 				$("#dialog").dialog("open");
 			});
+			
+			
+			$("#myOpener").click(function(){
+				$("#myDialog").attr("class","my-dialog-show");
+			})
+			
+			$(".close-button").click(function(){
+				$("#myDialog").attr("class","my-dialog-hide");
+			})
 		});
 	</script>
 </body>
